@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout::head">
+    <meta charset="UTF-8">
+    <title>List tour</title>
+</head>
+<body>
+<h3>Tour</h3>
+<p>
+    <a th:href="@{/tour/create}">
+        Add new tour
+    </a>
+</p>
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+<table id="tour">
+    <tr>
+        <th>Mã tour</th>
+        <th>Điểm đến</th>
+        <th>Giá</th>
+        <th>Ảnh</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    <tr th:each="row,rowStat : ${tour}">
+        <td th:text="${row.getCode()}"></td>
+        <td th:text="${row.getDestination()}"></td>
+        <td th:text="${row.getPrice()}"></td>
+        <td><img th:src="@{'/i/'+${row.getImg()}}" width="100"></td>
+
+
+        <td><a th:href="@{/tour/{id}/edit(id=${row.getId()})}">edit</a></td>
+        <td><a th:href="@{/tour/{id}/delete(id=${row.getId()})}">delete</a></td>
+
+
+        <td><a th:href="@{/tour/{id}/view(id=${row.getId()})}">view</a></td>
+    </tr>
+</table>
+<footer th:replace="/layout::footer"></footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout::head">
+    <meta charset="UTF-8">
+    <title>Detail tour</title>
+</head>
+<body>
+<p>
+    <a th:href="@{/tour}">
+        Back to list tour
+    </a>
+</p>
+<div id="detail">
+    <div class="to-detail">
+        <label>Mã tour</label>
+        <label th:text="${tour.code}"></label>
+    </div>
+    <div class="to-detail">
+        <label>Điểm đến</label>
+        <label th:text="${tour.destination}"></label>
+    </div>
+    <div class="to-detail">
+        <label>Giá</label>
+        <label th:text="${tour.price}"></label>
+    </div>
+    <div class="to-detail">
+        <label>Ảnh</label>
+        <img th:src="@{'/i/'+${tour.getImg()}}" width="100">
+
+    </div>
+</div>
+<footer th:replace="/layout::footer"></footer>
+</body>
+</html>
