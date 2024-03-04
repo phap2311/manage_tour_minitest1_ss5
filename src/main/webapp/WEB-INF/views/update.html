@@ -33,9 +33,11 @@
         <div>
             <label for="img">Ảnh</label>
             <input type="file" id="img" th:field="*{img}">
+            <img th:src="@{'/i/'+${tour.getImg()}}" width="100">
         </div>
         <div>
             <button type="submit" value="save">update</button>
+
         </div>
     </form>
 
